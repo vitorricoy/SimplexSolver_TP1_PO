@@ -9,7 +9,7 @@ import tableau_util as tableauUtil
 def verificarPrecisaAuxiliar(restricoes):
     return util.maiorIgual(min(restricoes[:, -1]), 0)
 
-def verificarPLAuxiliarViavel(tableauAuxiliar):
+def verificarPLAuxiliarInviavel(tableauAuxiliar):
     return not util.igual(tableauAuxiliar[0, -1], 0)
 
 def resolverPLFormaCanonica(n, m, vetorCusto, restricoes):
@@ -32,14 +32,14 @@ def resolverPLComAuxiliar(n, m, vetorCusto, restricoes):
     resultado, tableau = simplex.resolverSimplex(tableauAuxiliar, n, n+n+m)
 
     # Se o tableau auxiliar indicou que a PL é inviável
-    if verificarPLAuxiliarViavel(tableau):
+    if verificarPLAuxiliarInviavel(tableau):
         # Imprime a saída com base no resultado da PL auxiliar
         saida.saidaSimplex(constantes.INVIAVEL, tableau, n, m)
     else:
         # Converte o resultado do simplex no tableau auxiliar para um tableau
         # do problema original
         tableau = tableauUtil.converterTableauAuxiliar(tableau, n, m, vetorCusto)
-        
+        print(tableau)
         # Resolve o tableau obtido
         resultado, tableauFinal = simplex.resolverSimplex(tableau, n, n+m)
 
