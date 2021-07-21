@@ -18,8 +18,8 @@ def verificaIlimitado(tableau, n, m):
             # não positivos
             coluna = tableau[1:, n+c]
             achouAlgumPositivo = False
-            for j in range(len(coluna)):
-                if util.maior(coluna[j], 0):
+            for l in range(len(coluna)):
+                if util.maior(coluna[l], 0):
                     achouAlgumPositivo = True
                     break
             if not achouAlgumPositivo:
