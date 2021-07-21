@@ -11,21 +11,21 @@ def pivotearElemento(tableau, linha, coluna):
     return tableau
 
 def igual(valor1, valor2):
-    # Verifica se dois valores são iguais, considerando precisão de 8 casas decimais
-    return np.round(valor1, 8) == np.round(valor2, 8)
+    # Verifica se dois valores são iguais, considerando precisão de 7 casas decimais
+    return np.round(valor1, 7) == np.round(valor2, 7)
 
 def maiorIgual(valor1, valor2):
-    # Verifica se o primeiro valor é maior ou igual ao segundo, considerando precisão de 6 casas decimais
-    return np.round(valor1, 8) >= np.round(valor2, 8)
+    # Verifica se o primeiro valor é maior ou igual ao segundo, considerando precisão de 7 casas decimais
+    return np.round(valor1, 7) >= np.round(valor2, 7)
 
 def menor(valor1, valor2):
-    # Verifica se o primeiro valor é menor que o segundo, considerando precisão de 8 casas decimais
-    return np.round(valor1, 8) < np.round(valor2, 8)
+    # Verifica se o primeiro valor é menor que o segundo, considerando precisão de 7 casas decimais
+    return np.round(valor1, 7) < np.round(valor2, 7)
 
 def maior(valor1, valor2):
-    # Verifica se o primeiro valor é maior que o segundo, considerando precisão de 8 casas decimais
-    return np.round(valor1, 8) > np.round(valor2, 8)
+    # Verifica se o primeiro valor é maior que o segundo, considerando precisão de 7 casas decimais
+    return np.round(valor1, 7) > np.round(valor2, 7)
 
 def menorIgual(valor1, valor2):
-    # Verifica se o primeiro valor é menor ou igual ao segundo, considerando precisão de 8 casas decimais
-    return np.round(valor1, 8) <= np.round(valor2, 8)
+    # Verifica se o primeiro valor é menor ou igual ao segundo, considerando precisão de 7 casas decimais
+    return np.round(valor1, 7) <= np.round(valor2, 7)
