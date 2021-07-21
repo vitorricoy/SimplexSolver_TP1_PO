@@ -39,7 +39,7 @@ def resolverPLComAuxiliar(n, m, vetorCusto, restricoes):
         # Converte o resultado do simplex no tableau auxiliar para um tableau
         # do problema original
         tableau = tableauUtil.converterTableauAuxiliar(tableau, n, m, vetorCusto)
-        print(tableau)
+        
         # Resolve o tableau obtido
         resultado, tableauFinal = simplex.resolverSimplex(tableau, n, n+m)
 
