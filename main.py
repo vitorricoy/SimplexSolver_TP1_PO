@@ -27,7 +27,6 @@ def resolverPLComAuxiliar(n, m, vetorCusto, restricoes):
     # É necessário resolver a PL auxiliar para encontrar uma base viável
     # Monta o tableau da PL auxiliar
     tableauAuxiliar = tableauUtil.montarTableauAuxiliar(n, m, restricoes, vetorCusto)
-
     # Resolve o simplex no tableau auxiliar
     resultado, tableau = simplex.resolverSimplex(tableauAuxiliar, n, n+n+m)
 
