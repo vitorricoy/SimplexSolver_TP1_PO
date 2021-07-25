@@ -42,6 +42,7 @@ def exibirSaidaOtima(tableau, n, m):
     print()
     for el in certificadoOtima:
         print("{:.7f}".format(el), end = ' ')
+    print()
 
 def exibirSaidaIlimitada(tableau, n, m):
     # Procura o índice da coluna que gera o certificado de ilimitada
@@ -53,14 +54,16 @@ def exibirSaidaIlimitada(tableau, n, m):
         # Se a entrada do vetor c da coluna é negativa
         if util.menor(tableau[0, n+c], 0):
             # Conta os elementos não positivos na coluna
-            naoPositivos = np.sum(util.menorIgual(np.array(tableau[1:, n+c]), 0))
+            naoPositivos = 0
+            for el in tableau[1:, n+c]:
+            	if util.menorIgual(el, 0):
+            	    naoPositivos+=1
             # Se todos os elementos são não negativos, a coluna gera
             # o certificado de ilimitada
             if naoPositivos == n:
                 # Salva o índice da coluna
                 colunaIlimitada = n+c
                 break
-    
     # Inicializa o certificado de ilimitada com zeros
     certificadoIlimitada = np.zeros(m+n)
     # Inicializa a solução com zeros
@@ -89,7 +92,6 @@ def exibirSaidaIlimitada(tableau, n, m):
                                 solucao[c] = tableau[l+1, -1]
     
     certificadoIlimitada[colunaIlimitada-n] = 1
-    
     # Imprime o resultado no formato pedido
     print('ilimitada')
     for el in solucao:
@@ -107,6 +109,7 @@ def exibirSaidaInviavel(tableau, n):
     print('inviavel')
     for el in certificadoInviabilidade:
         print("{:.7f}".format(el), end = ' ')
+    print()
 
 def saidaSimplex(resultado, tableau, n, m):
     if resultado == constantes.OTIMA:

@@ -3,7 +3,7 @@ TMP_OUT=$2
 
 for i in {0..10..1}; do
   testname=$(printf "%d" $i)
-  $EXEC < tests/$testname.in > $TMP_OUT
+  python3 $EXEC < tests/$testname.in > $TMP_OUT
   if ! diff -qwB tests/$testname.out $TMP_OUT &>/dev/null; then
     echo "Test $testname failed"
   else
