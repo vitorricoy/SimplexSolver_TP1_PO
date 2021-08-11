@@ -9,6 +9,7 @@ def lerEntrada():
 
     vetorCusto = input().split()
     vetorCusto = list(map(int, vetorCusto))
+
     restricoes = []
     for i in range(n):
         restricao = input().split()

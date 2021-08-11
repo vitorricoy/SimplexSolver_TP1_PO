@@ -4,7 +4,7 @@ import numpy as np
 import constantes
 import util
 
-def exibirSaidaOtima(tableau, n, m, cx, A, b):
+def exibirSaidaOtima(tableau, n, m):
     # Obtém o certificado de ótima a partir do tableau
     certificadoOtima = tableau[0, 0:n]
 
@@ -31,7 +31,7 @@ def exibirSaidaOtima(tableau, n, m, cx, A, b):
                             # Salva o valor da variável básica correspondente à coluna
                             # como solução
                             solucao[c] = tableau[l+1, -1]
-    c = cx
+    
     # Obtém o valor objetivo ótimo a partir do tableau
     valorOtimo = tableau[0, -1]
 
@@ -45,18 +45,8 @@ def exibirSaidaOtima(tableau, n, m, cx, A, b):
     for el in certificadoOtima:
         print("{:.7f}".format(el), end = ' ')
     print()
-    y = np.array(certificadoOtima)
-    s = np.array(solucao)
-    print(y.T@A)
-    print('>=')
-    print(c)
-    print()
-    print(y.T@b)
-    print('=')
-    print(c @ s)
-    print()
 
-def exibirSaidaIlimitada(tableau, n, m, cx, A, b):
+def exibirSaidaIlimitada(tableau, n, m):
     # Procura o índice da coluna que gera o certificado de ilimitada
     # Inicialmente o índice é -1 (desconhecido)
     colunaIlimitada = -1
@@ -103,8 +93,6 @@ def exibirSaidaIlimitada(tableau, n, m, cx, A, b):
                                 # Salva o valor da solução viável para essa variável
                                 solucao[c] = tableau[l+1, -1]
     
-    c = cx
-
     certificadoIlimitada[colunaIlimitada-n] = 1
     # Imprime o resultado no formato pedido
     print('ilimitada')
@@ -114,19 +102,8 @@ def exibirSaidaIlimitada(tableau, n, m, cx, A, b):
     for el in certificadoIlimitada:
         print("{:.7f}".format(el), end = ' ')
     print()
-    d = np.array(certificadoIlimitada)
-    novoA = np.zeros((n, n+m))
-    novoA[:, :m] = A
-    novoA[:, m:] = np.identity(n)
-    novoC = np.zeros(n+m)
-    novoC[:m] = c
-    c = novoC
-    A = novoA
-    print(A@d)
-    print(c @ d)
-    print()
 
-def exibirSaidaInviavel(tableau, n, c, A, b):
+def exibirSaidaInviavel(tableau, n):
     # Obtém o certificado de inviabilidade a partir do tableau da PL auxiliar
     certificadoInviabilidade = tableau[0, 0:n]
 
@@ -135,16 +112,12 @@ def exibirSaidaInviavel(tableau, n, c, A, b):
     for el in certificadoInviabilidade:
         print("{:.7f}".format(el), end = ' ')
     print()
-    y = np.array(certificadoInviabilidade)
-    print(y.T@A)
-    print(y.T@b)
-    print()
 
-def saidaSimplex(resultado, tableau, n, m, c, A, b):
+def saidaSimplex(resultado, tableau, n, m):
     if resultado == constantes.OTIMA:
-        exibirSaidaOtima(tableau, n, m, c, A, b)
+        exibirSaidaOtima(tableau, n, m)
     else:
         if resultado == constantes.ILIMITADA:
-            exibirSaidaIlimitada(tableau, n, m, c, A, b)
+            exibirSaidaIlimitada(tableau, n, m)
         else:
-            exibirSaidaInviavel(tableau, n, c, A, b)
+            exibirSaidaInviavel(tableau, n)
